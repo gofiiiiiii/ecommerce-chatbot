@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Payment</title>
+    <style>
+        body{
+            background:linear-gradient(120deg,#1e3c72,#2a5298);
+            font-family:Segoe UI, Tahoma, sans-serif;
+        }
+
+        .pay-box{
+            width:360px;
+            margin:80px auto;
+            background:white;
+            border-radius:12px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.3);
+            padding:25px;
+        }
+
+        h2{
+            text-align:center;
+            color:#1e3c72;
+        }
+
+        .product{
+            text-align:center;
+            margin:15px 0;
+        }
+
+        .product span{
+            font-size:14px;
+            color:#666;
+        }
+
+        .price{
+            font-size:22px;
+            font-weight:bold;
+            color:#27ae60;
+        }
+
+        label{
+            display:block;
+            margin:15px 0 5px;
+            font-size:14px;
+            color:#333;
+        }
+
+        select{
+            width:100%;
+            padding:10px;
+            border-radius:8px;
+            border:1px solid #ccc;
+            font-size:15px;
+        }
+
+        .icons{
+            display:flex;
+            justify-content:space-around;
+            margin:15px 0;
+            font-size:28px;
+        }
+
+        .pay-btn{
+            width:100%;
+            padding:12px;
+            margin-top:20px;
+            background:#27ae60;
+            border:none;
+            border-radius:8px;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        .pay-btn:hover{
+            background:#219150;
+        }
+
+        .secure{
+            text-align:center;
+            font-size:12px;
+            margin-top:10px;
+            color:#777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="pay-box">
+
+    <h2>Secure Checkout</h2>
+
+    <div class="product">
+        <span>{{ product.name }}</span><br>
+        <div class="price">₹ {{ price }}</div>
+    </div>
+
+    <form method="post">
+        <label>Choose Payment Method</label>
+        <select name="payment" required>
+            <option value="Credit Card">💳 Credit Card</option>
+            <option value="Debit Card">🏧 Debit Card</option>
+            <option value="UPI">📱 UPI</option>
+        </select>
+
+        <div class="icons">
+            💳 🏧 📱
+        </div>
+
+        <button class="pay-btn">Pay Securely</button>
+    </form>
+
+    <div class="secure">
+        🔒 100% Secure Payment | SSL Encrypted
+    </div>
+
+</div>
+
+</body>
+</html>

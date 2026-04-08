@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products | Price Negotiator Chatbot</title>
+    <style>
+        body{
+            margin:0;
+            font-family:'Segoe UI', Tahoma, sans-serif;
+            background:#f4f6f8;
+        }
+
+        /* ---------- HERO SECTION ---------- */
+        .hero{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:60px 8%;
+            background:linear-gradient(120deg,#185a9d,#43cea2);
+            color:white;
+        }
+
+        .hero-text{
+            width:55%;
+        }
+
+        .hero-text h1{
+            font-size:36px;
+            margin-bottom:15px;
+        }
+
+        .hero-text p{
+            font-size:18px;
+            line-height:1.6;
+        }
+
+        .hero img{
+            width:380px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .scroll-btn{
+            margin-top:25px;
+            padding:12px 20px;
+            background:white;
+            color:#185a9d;
+            border:none;
+            font-size:16px;
+            border-radius:6px;
+            cursor:pointer;
+        }
+
+        /* ---------- PRODUCTS SECTION ---------- */
+        h2{
+            text-align:center;
+            margin:40px 0 10px;
+            color:#333;
+        }
+
+        .container{
+            width:90%;
+            margin:auto;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+            gap:25px;
+            padding:30px 0 50px;
+        }
+
+        .card{
+            background:white;
+            border-radius:12px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.15);
+            padding:15px;
+            text-align:center;
+            transition:transform 0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card img{
+            width:100%;
+            height:160px;
+            object-fit:cover;
+            border-radius:8px;
+        }
+
+        .card h3{
+            margin:12px 0 6px;
+            color:#222;
+        }
+
+        .price{
+            font-size:17px;
+            font-weight:600;
+            color:#185a9d;
+        }
+
+        .card button{
+            width:100%;
+            margin-top:12px;
+            padding:10px;
+            border:none;
+            border-radius:6px;
+            background:#43cea2;
+            color:white;
+            font-size:15px;
+            cursor:pointer;
+        }
+
+        .card button:hover{
+            background:#36b89c;
+        }
+
+        footer{
+            background:#222;
+            color:white;
+            text-align:center;
+            padding:12px;
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+    <div class="hero-text">
+        <h1>AI Price Negotiator E-Commerce Chatbot</h1>
+        <p>
+            This project uses <b>NLP-based conversational AI</b> to negotiate product prices
+            dynamically with users. Customers can interact like a real salesperson,
+            finalize prices, and proceed securely to payment.
+        </p>
+        <a href="#products">
+            <button class="scroll-btn">Explore Products ↓</button>
+        </a>
+    </div>
+
+    <img src="{{ url_for('static', filename='images/hero.jpg') }}">
+</div>
+
+<!-- ================= PRODUCTS ================= -->
+<h2 id="products">🛒 Available Products</h2>
+
+<div class="container">
+    {% for p in products %}
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/' + p.image) }}">
+        <h3>{{ p.name }}</h3>
+        <div class="price">₹ {{ p.price }}</div>
+        <a href="/chat/{{ p.id }}">
+            <button>Chat & Negotiate</button>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<footer>
+    © 2026 AI Price Negotiator | Flask • NLP • Python
+</footer>
+
+</body>
+</html>

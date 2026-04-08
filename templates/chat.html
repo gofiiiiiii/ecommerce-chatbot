@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <style>
+        body{
+            margin:0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:#ece5dd;
+        }
+
+        .chat-container{
+            width:400px;
+            margin:40px auto;
+            background:#fff;
+            border-radius:10px;
+            box-shadow:0 0 15px rgba(0,0,0,0.2);
+            display:flex;
+            flex-direction:column;
+            height:600px;
+        }
+
+        .chat-header{
+            background:#075e54;
+            color:white;
+            padding:15px;
+            border-radius:10px 10px 0 0;
+            text-align:center;
+        }
+
+        .chat-body{
+            flex:1;
+            padding:15px;
+            overflow-y:auto;
+            background:#efeae2;
+        }
+
+        .msg{
+            max-width:70%;
+            padding:10px;
+            margin:8px 0;
+            border-radius:8px;
+            font-size:14px;
+            line-height:1.4;
+        }
+
+        .user{
+            background:#dcf8c6;
+            align-self:flex-end;
+            text-align:right;
+        }
+
+        .bot{
+            background:#fff;
+            border:1px solid #ccc;
+            align-self:flex-start;
+        }
+
+        .chat-footer{
+            display:flex;
+            padding:10px;
+            background:#f0f0f0;
+        }
+
+        input{
+            flex:1;
+            padding:8px;
+            border-radius:20px;
+            border:1px solid #ccc;
+            outline:none;
+        }
+
+        button{
+            background:#25d366;
+            border:none;
+            color:white;
+            padding:8px 15px;
+            margin-left:8px;
+            border-radius:50%;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        .pay-btn{
+            background:#ff9800;
+            border-radius:5px;
+            margin:10px;
+            padding:10px;
+            text-align:center;
+            color:white;
+            display:none;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+
+    <div class="chat-header">
+        🤖 {{ product.name }} Negotiation
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <div class="msg bot">
+            Hello 👋  
+            I’m here to help you negotiate the best price for {{ product.name }}.  
+            What price are you expecting?
+        </div>
+    </div>
+
+    <div class="chat-footer">
+        <input id="msg" placeholder="Type your message...">
+        <button onclick="send()">➤</button>
+    </div>
+
+    <div class="pay-btn" id="payBtn" onclick="goPayment()">
+        Proceed to Payment 💳
+    </div>
+
+</div>
+
+<script>
+function addMessage(text, type){
+    let body = document.getElementById("chatBody");
+    let div = document.createElement("div");
+    div.className = "msg " + type;
+    div.innerText = text;
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+}
+
+function send(){
+    let msg = document.getElementById("msg").value;
+    if(msg.trim() === "") return;
+
+    addMessage(msg, "user");
+    document.getElementById("msg").value = "";
+
+    fetch("/message", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body:JSON.stringify({ msg: msg })
+    })
+    .then(res => res.json())
+    .then(data => {
+        addMessage(data.reply, "bot");
+
+        if(data.payment){
+            document.getElementById("payBtn").style.display = "block";
+        }
+    });
+}
+
+function goPayment(){
+    window.location.href = "/payment";
+}
+</script>
+

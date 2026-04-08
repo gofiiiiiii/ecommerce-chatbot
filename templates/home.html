@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Price Negotiator</title>
+    <style>
+        body{
+            margin:0;
+            font-family:'Segoe UI', Tahoma, sans-serif;
+            background:#f5f2ef;
+        }
+
+        /* -------- NAVBAR -------- */
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 60px;
+        }
+
+        .logo{
+            font-size:22px;
+            font-weight:700;
+            color:#333;
+        }
+
+        .nav-links a{
+            margin-left:25px;
+            text-decoration:none;
+            color:#444;
+            font-weight:500;
+        }
+
+        .nav-links a:hover{
+            color:#c46b2b;
+        }
+
+        /* -------- HERO -------- */
+        .hero-wrapper{
+            background:#fff;
+            margin:30px;
+            border-radius:30px;
+            padding:60px;
+            box-shadow:0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        .hero{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+
+        .hero-text{
+            width:45%;
+        }
+
+        .hero-text small{
+            letter-spacing:3px;
+            color:#c46b2b;
+            font-weight:600;
+        }
+
+        .hero-text h1{
+            font-size:48px;
+            margin:15px 0;
+            color:#222;
+        }
+
+        .hero-text p{
+            font-size:18px;
+            color:#555;
+            line-height:1.6;
+        }
+
+        .hero-text button{
+            margin-top:25px;
+            padding:14px 26px;
+            background:#c46b2b;
+            color:white;
+            border:none;
+            font-size:16px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        .hero-text button:hover{
+            background:#a8561f;
+        }
+
+        .hero-image{
+            width:45%;
+            text-align:center;
+        }
+
+        .hero-image img{
+            width:360px;
+        }
+
+        /* -------- FEATURE CARD -------- */
+        .feature{
+            margin-top:40px;
+            width:180px;
+            padding:15px;
+            background:#f7f3ef;
+            border-radius:16px;
+            text-align:center;
+            box-shadow:0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature img{
+            width:80px;
+            border-radius:12px;
+        }
+
+        .feature p{
+            margin-top:10px;
+            font-weight:600;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">💬 AI Negotiator</div>
+    <div class="nav-links">
+        <a href="/home">Home</a>
+        <a href="/products">Products</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<!-- HERO CARD -->
+<div class="hero-wrapper">
+    <div class="hero">
+        <div class="hero-text">
+            <small>SMART AI COMMERCE</small>
+            <h1>Negotiate Prices<br>Like a Human</h1>
+            <p>
+                Experience an intelligent e-commerce platform where an
+                NLP-powered chatbot negotiates product prices dynamically
+                and helps customers get the best deal.
+            </p>
+
+            <a href="/products">
+                <button>Explore Products</button>
+            </a>
+
+            <div class="feature">
+                <img src="{{ url_for('static', filename='images/chatbot.png') }}">
+                <p>AI Chatbot</p>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='images/hero_chat.png') }}">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
