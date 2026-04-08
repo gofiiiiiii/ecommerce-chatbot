@@ -182,3 +182,8 @@ def logout():
 # ---------------- RUN ----------------
 if __name__ == "__main__":
     app.run(debug=True)
+
+# For production deployment (Render / gunicorn)
+if __name__ != "__main__":
+    # Remove debug in production
+    pass

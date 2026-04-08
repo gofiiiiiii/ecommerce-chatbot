@@ -3,3 +3,4 @@ werkzeug
 textblob
 pandas
 openpyxl
+gunicorn
